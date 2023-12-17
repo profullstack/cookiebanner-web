@@ -4,6 +4,8 @@ class ZapWebRing extends HTMLElement {
   constructor() {
     super();
     this.webring = [];
+
+    this.render = this.render.bind(this);
   }
   async connectedCallback() {
     this.attachShadow({ mode: "open" });
@@ -13,16 +15,57 @@ class ZapWebRing extends HTMLElement {
   }
 
   async render() {
+    const sites = this.webring
+      .map((site) => {
+        // Return a template literal for each site.
+        // Customize this template based on your site object structure.
+        return `<div class="site" style="width: 200px; border: 1px solid gray; padding: 12px; margin: 12px;">
+            <a href="${site["URL"]}" title="${site["Name"]}" style="text-decoration: none;">
+            <img src="${site["Logo URL"]}" style="height: 50px; display: block;" />
+            <span style="font-size: 11px; margin-top: 8px; display: block;">${site["URL"]}</span>
+            </a>
+        </div>`;
+      })
+      .join("");
+
     this.shadowRoot.innerHTML = `
-    <h1>zap web ring</h1>
+    <style>
+      img.square {
+        border: 1px solid black;
+        border-radius: 60rem;
+      }
+    </style>
+     <center>
+       <section class="sites" style="height: 120px; overflow-y: auto;">
+        ${sites}
+       </section>
+
+      <footer>
+        <small>
+          <a href="https://zapwebring.com">zap web ring</a>
+          - 
+          <a href="https://pay.globalthreat.info/apps/47frGj3Hs9wdUfKoSCxdDWTS2ChP/crowdfund" target="_blank">crowd fund</a>
+        </small>
+      </footer>
+    </center>
     `;
+
+    const images = this.shadowRoot.querySelectorAll(".sites img");
+
+    for (var i = 0; i < images.length; i++) {
+      const img = images[i];
+
+      if (
+        img.src.indexOf("svg") === -1 &&
+        img.naturalWidth === img.naturalHeight
+      ) {
+        img.classList.add("square");
+      }
+    }
   }
-  
 
   disconnectedCallback() {
-    this.shadowRoot
-      .querySelector('form')
-      .removeEventListener("submit");
+    this.shadowRoot.querySelector("form").removeEventListener("submit");
   }
 }
 

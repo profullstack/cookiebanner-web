@@ -1,12 +1,12 @@
 *,
 *::after,
 *::before {
-	font-family: SpaceMono, sans-serif;
+	font-family: Rubik, sans-serif;
 }
 
 .bold,
 strong {
-	font-family: SpaceMono-Bold;
+	font-family: Rubik-Bold;
 }
 
 section {

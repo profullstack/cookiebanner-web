@@ -9,7 +9,7 @@ async function fetchCSV(url) {
 }
 
 async function getWebRing() {
-  const sheetId = "1aQ2nvKz79467alAwtmCz2vXYqNPmLt0mz0qcMzVZUUE";
+  const sheetId = "1uOVtv20ICDuLuNMd2gaX7as3XzLCHKBYaasAVbPcX-I";
   const url = `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv`;
 
   try {
