@@ -31,8 +31,9 @@ form {
 }
 
 pre {
-    overflow-y: auto;
-    height: 170px;
+	margin: 1.2rem;
+	max-width: 80vw;
+	white-space: pre-wrap;
 }
 
 #html-log::before {
