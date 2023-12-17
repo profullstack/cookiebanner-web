@@ -68,7 +68,7 @@ class ZapWebRing extends HTMLElement {
     }
 
     const links = this.shadowRoot.querySelectorAll(".sites a[href]");
-
+    /*
     for (let link of links) {
       link.addEventListener("click", async (e) => {
         e.preventDefault();
@@ -76,8 +76,8 @@ class ZapWebRing extends HTMLElement {
         window.location = link.href;
       });
     }
+    */
   }
-
   disconnectedCallback() {
     this.shadowRoot.querySelector("form").removeEventListener("submit");
   }
