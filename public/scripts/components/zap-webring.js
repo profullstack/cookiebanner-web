@@ -21,12 +21,19 @@ class ZapWebRing extends HTMLElement {
         // Customize this template based on your site object structure.
         return `<div class="site" style="width: 200px; border: 1px solid gray; padding: 12px; margin: 12px;">
             <a 
-              href="${site["URL"]}"
+              href="${
+                site["URL"].indexOf("?") > -1 ? "&" : "?"
+              }utm_source=zapwebring.com"
               title="${site["Name"]}"
               npub="${site["npub"]}"
-              style="text-decoration: none;">
-            <img src="${site["Logo URL"]}" style="height: 50px; display: block;" />
-            <span style="font-size: 11px; margin-top: 8px; display: block;">${site["URL"]}</span>
+              style="text-decoration: none; color: #000;">
+            <img src="${
+              site["Logo URL"]
+            }" style="height: 50px; display: block;" />
+            <p style="font-size: 11px; margin: 6px 0;">${site["Tagline"]}</p>
+            <span style="font-size: 11px; margin-top: 8px; display: block;">${
+              site["URL"]
+            }</span>
             </a>
         </div>`;
       })
