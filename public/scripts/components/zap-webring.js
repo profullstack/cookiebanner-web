@@ -22,7 +22,7 @@ class ZapWebRing extends HTMLElement {
         return `<div class="site" style="width: 200px; border: 1px solid gray; padding: 12px; margin: 12px;">
             <a 
               href="${
-                site["URL"].indexOf("?") > -1 ? "&" : "?"
+                site["URL"] + (site["URL"].indexOf("?") > -1 ? "&" : "?")
               }utm_source=zapwebring.com"
               title="${site["Name"]}"
               npub="${site["npub"]}"
